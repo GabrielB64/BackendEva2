@@ -1,0 +1,25 @@
+body {
+    background-color: #f5f6f8;
+}
+
+.product-card {
+    height: 100%;
+    transition: transform 0.15s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+}
+
+.product-price {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.hero {
+    padding: 80px 20px;
+}
+
+footer {
+    min-height: 120px;
+}

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Inicio | PC Hardware Store
+{% endblock %}
+
+{% block content %}
+
+<section class="hero text-center">
+
+    <h1 class="display-4 fw-bold">
+        PC Hardware Store
+    </h1>
+
+    <p class="lead">
+        Componentes para construir, actualizar y potenciar tu PC.
+    </p>
+
+    <a
+        href="{% url 'catalogo' %}"
+        class="btn btn-primary btn-lg"
+    >
+        Ver componentes
+    </a>
+
+</section>
+
+<section class="row text-center mt-5">
+
+    <div class="col-md-4 mb-4">
+        <div class="card p-4 h-100">
+            <h3>Procesadores</h3>
+            <p>
+                CPU AMD e Intel para todo tipo de configuración.
+            </p>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card p-4 h-100">
+            <h3>Tarjetas de Video</h3>
+            <p>
+                Potencia gráfica para gaming y creación de contenido.
+            </p>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card p-4 h-100">
+            <h3>Memoria RAM</h3>
+            <p>
+                Memoria de alto rendimiento para tu equipo.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Mis órdenes | PC Hardware Store
+{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4">
+    Mis órdenes
+</h1>
+
+{% if ordenes %}
+
+    {% for orden in ordenes %}
+
+        <div class="card mb-4">
+
+            <div class="card-header d-flex justify-content-between">
+
+                <strong>
+                    Orden #{{ orden.id }}
+                </strong>
+
+                <span class="badge bg-primary">
+                    {{ orden.estado }}
+                </span>
+
+            </div>
+
+            <div class="card-body">
+
+                <p>
+                    <strong>Fecha:</strong>
+                    {{ orden.creado_en|date:"d/m/Y H:i" }}
+                </p>
+
+                <div class="table-responsive">
+
+                    <table class="table">
+
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>SKU</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            {% for detalle in orden.detalles.all %}
+
+                                <tr>
+
+                                    <td>
+                                        {{ detalle.nombre_producto }}
+                                    </td>
+
+                                    <td>
+                                        {{ detalle.sku }}
+                                    </td>
+
+                                    <td>
+                                        ${{ detalle.precio_unitario }}
+                                    </td>
+
+                                    <td>
+                                        {{ detalle.cantidad }}
+                                    </td>
+
+                                    <td>
+                                        ${{ detalle.subtotal }}
+                                    </td>
+
+                                </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div class="text-end">
+
+                    <strong>
+                        Total: ${{ orden.total }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+{% else %}
+
+    <div class="alert alert-info">
+        Todavía no tienes órdenes.
+    </div>
+
+    <a
+        href="{% url 'catalogo' %}"
+        class="btn btn-primary"
+    >
+        Ver productos
+    </a>
+
+{% endif %}
+
+{% endblock %}

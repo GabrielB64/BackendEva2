@@ -1,0 +1,1 @@
+console.log("PC Hardware Store iniciado.");

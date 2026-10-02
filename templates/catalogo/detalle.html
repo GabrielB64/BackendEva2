@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ producto.nombre }} | PC Hardware Store
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+    <div class="col-md-7">
+
+        <span class="badge bg-secondary mb-3">
+            {{ producto.categoria.nombre }}
+        </span>
+
+        <h1>
+            {{ producto.nombre }}
+        </h1>
+
+        <h4 class="text-muted">
+            {{ producto.marca }}
+        </h4>
+
+        <hr>
+
+        <p>
+            {{ producto.descripcion }}
+        </p>
+
+        <p>
+            <strong>SKU:</strong>
+            {{ producto.sku }}
+        </p>
+
+        <p>
+            <strong>Stock disponible:</strong>
+            {{ producto.stock }}
+        </p>
+
+    </div>
+
+
+    <div class="col-md-5">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <h2 class="product-price">
+                    ${{ producto.precio }}
+                </h2>
+
+                {% if producto.stock > 0 %}
+
+                    {% if user.is_authenticated %}
+
+                        <form
+                            method="post"
+                            action="{% url 'carro-agregar-html' %}"
+                        >
+
+                            {% csrf_token %}
+
+                            <input
+                                type="hidden"
+                                name="producto"
+                                value="{{ producto.id }}"
+                            >
+
+                            <label
+                                for="cantidad"
+                                class="form-label"
+                            >
+                                Cantidad
+                            </label>
+
+                            <input
+                                type="number"
+                                name="cantidad"
+                                id="cantidad"
+                                class="form-control mb-3"
+                                value="1"
+                                min="1"
+                            >
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary w-100"
+                            >
+                                Agregar al carrito
+                            </button>
+
+                        </form>
+
+                    {% else %}
+
+                        <a
+                            href="{% url 'login-html' %}"
+                            class="btn btn-primary w-100"
+                        >
+                            Inicia sesión para comprar
+                        </a>
+
+                    {% endif %}
+
+                {% else %}
+
+                    <button
+                        class="btn btn-secondary w-100"
+                        disabled
+                    >
+                        Sin stock
+                    </button>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<a
+    href="{% url 'catalogo' %}"
+    class="btn btn-outline-secondary mt-4"
+>
+    ← Volver al catálogo
+</a>
+
+{% endblock %}

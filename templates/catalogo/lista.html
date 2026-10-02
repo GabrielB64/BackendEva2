@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Productos | PC Hardware Store
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+        <h1>Componentes de PC</h1>
+
+        <p class="text-muted">
+            Explora nuestro catálogo de hardware.
+        </p>
+    </div>
+
+</div>
+
+
+<div class="row">
+
+    {% for producto in productos %}
+
+        <div class="col-md-4 col-lg-3 mb-4">
+
+            <div class="card product-card">
+
+                <div class="card-body">
+
+                    <span class="badge bg-secondary mb-2">
+                        {{ producto.categoria.nombre }}
+                    </span>
+
+                    <h5 class="card-title">
+                        {{ producto.nombre }}
+                    </h5>
+
+                    <p class="text-muted mb-2">
+                        {{ producto.marca }}
+                    </p>
+
+                    <p class="product-price">
+                        ${{ producto.precio }}
+                    </p>
+
+                    {% if producto.stock > 0 %}
+
+                        <p class="text-success">
+                            Disponible
+                        </p>
+
+                    {% else %}
+
+                        <p class="text-danger">
+                            Sin stock
+                        </p>
+
+                    {% endif %}
+
+                    <a
+                        href="{% url 'producto-html' producto.id %}"
+                        class="btn btn-primary w-100"
+                    >
+                        Ver producto
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    {% empty %}
+
+        <div class="col-12">
+
+            <div class="alert alert-info">
+                No hay productos disponibles actualmente.
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
