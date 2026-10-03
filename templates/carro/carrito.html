@@ -10,107 +10,62 @@
     Mi carrito
 </h1>
 
-{% if carro.items.exists %}
+{% for item in carro.items.all %}
+    <div class="card mb-3">
+        <div class="card-body">
 
-    <div class="table-responsive">
+            <h5 class="card-title">
+                {{ item.producto.marca }} {{ item.producto.nombre }}
+            </h5>
 
-        <table class="table table-bordered align-middle">
+            <p class="mb-1">
+                Precio unitario:
+                ${{ item.producto.precio }}
+            </p>
 
-            <thead class="table-dark">
-                <tr>
-                    <th>Producto</th>
-                    <th>Marca</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Subtotal</th>
-                    <th></th>
-                </tr>
-            </thead>
+            <p class="mb-1">
+                Cantidad:
+                {{ item.cantidad }}
+            </p>
 
-            <tbody>
+            <p class="mb-3">
+                Subtotal:
+                ${{ item.producto.precio|floatformat:0 }}
+                × {{ item.cantidad }}
+            </p>
 
-                {% for item in carro.items.exists %}
+            
 
-                    <tr>
+            <form
+                method="post"
+                action="{% url 'carro-eliminar-html' item.id %}"
+            >
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">
+                    Eliminar
+                </button>
+            </form>
 
-                        <td>
-                            {{ item.producto.nombre }}
-                        </td>
+            <div class="text-end mt-4">
+                <form method="post" action="{% url 'checkout-html' %}">
+                {% csrf_token %}
 
-                        <td>
-                            {{ item.producto.marca }}
-                        </td>
+                    <button type="submit" class="btn btn-success btn-lg">
+                        Confirmar compra
+                    </button>
+                </form>
+            </div>
+    
 
-                        <td>
-                            ${{ item.producto.precio }}
-                        </td>
-
-                        <td>
-                            {{ item.cantidad }}
-                        </td>
-
-                        <td>
-                            ${{ item.producto.precio|floatformat:0 }}
-                        </td>
-
-                        <td>
-
-                            <form
-                                method="post"
-                                action="{% url 'carro-eliminar-html' item.id %}"
-                            >
-
-                                {% csrf_token %}
-
-                                <button
-                                    type="submit"
-                                    class="btn btn-danger btn-sm"
-                                >
-                                    Eliminar
-                                </button>
-
-                            </form>
-
-                        </td>
-
-                    </tr>
-
-                {% endfor %}
-
-            </tbody>
-
-        </table>
-
+        </div>
     </div>
 
-    <div class="text-end">
-
-        <h3>
-            Total: ${{ carro.total }}
-        </h3>
-
-        <a
-            href="#"
-            class="btn btn-success"
-        >
-            Proceder al checkout
-        </a>
-
-    </div>
-
-{% else %}
+{% empty %}
 
     <div class="alert alert-info">
         Tu carrito está vacío.
     </div>
 
-    <a
-        href="{% url 'catalogo' %}"
-        class="btn btn-primary"
-    >
-        Ver productos
-    </a>
-
-{% endif %}
+{% endfor %}
 
 {% endblock %}

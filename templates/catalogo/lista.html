@@ -18,6 +18,105 @@
 
 </div>
 
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h5 class="card-title mb-3">Buscar y filtrar productos</h5>
+
+        <form method="get">
+            <div class="row g-3">
+
+                <!-- Búsqueda -->
+                <div class="col-md-4">
+                    <label for="q" class="form-label">
+                        Buscar
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="q"
+                        name="q"
+                        placeholder="Nombre, marca o SKU..."
+                        value="{{ busqueda }}"
+                    >
+                </div>
+
+                <!-- Categoría -->
+                <div class="col-md-3">
+                    <label for="categoria" class="form-label">
+                        Categoría
+                    </label>
+
+                    <select
+                        class="form-select"
+                        id="categoria"
+                        name="categoria"
+                    >
+                        <option value="">Todas las categorías</option>
+
+                        {% for categoria in categorias %}
+                            <option
+                                value="{{ categoria.id }}"
+                                {% if categoria.id|stringformat:"s" == categoria_seleccionada %}selected{% endif %}
+                            >
+                                {{ categoria.nombre }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Precio mínimo -->
+                <div class="col-md-2">
+                    <label for="precio_min" class="form-label">
+                        Precio mínimo
+                    </label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="precio_min"
+                        name="precio_min"
+                        min="0"
+                        value="{{ precio_min }}"
+                    >
+                </div>
+
+                <!-- Precio máximo -->
+                <div class="col-md-2">
+                    <label for="precio_max" class="form-label">
+                        Precio máximo
+                    </label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="precio_max"
+                        name="precio_max"
+                        min="0"
+                        value="{{ precio_max }}"
+                    >
+                </div>
+
+                <!-- Botones -->
+                <div class="col-md-1 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100">
+                        Filtrar
+                    </button>
+                </div>
+
+            </div>
+        </form>
+
+        {% if busqueda or categoria_seleccionada or precio_min or precio_max %}
+            <div class="mt-3">
+                <a href="{% url 'catalogo' %}" class="btn btn-outline-secondary btn-sm">
+                    Limpiar filtros
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
 
 <div class="row">
 

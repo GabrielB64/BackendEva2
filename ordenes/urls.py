@@ -4,6 +4,7 @@ from .views import (
     CheckoutView,
     MisOrdenesView,
     OrdenEstadoView,
+    checkout_html,
     mis_ordenes_html,
 )
 
@@ -28,8 +29,14 @@ urlpatterns = [
     ),
     
     path(
-        "mis-ordenes/",
+        "mis-ordenes/pagina/",
         mis_ordenes_html,
         name="mis-ordenes-html",
     ),
+    
+    path(
+    "checkout/pagina/",
+    checkout_html,
+    name="checkout-html",
+),
 ]

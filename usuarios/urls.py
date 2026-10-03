@@ -2,7 +2,7 @@ from django.urls import path
 from .views import CustomTokenObtainPairView, RegistroUsuarioView
 from rest_framework_simplejwt.views import TokenRefreshView
 
-from .views import loging, logout, registro
+from .views import login_html, logout_html, registro
 
 urlpatterns = [
     path(
@@ -21,18 +21,18 @@ urlpatterns = [
         name='registro_usuario'
     ),
     path(
-        'login/',
-        loging,
-        name='loging'
+        'pagina/login/',
+        login_html,
+        name='login-html'
     ),
     path(
-        'logout/',
-        logout,
-        name='logout'
+        'pagina/logout/',
+        logout_html,
+        name='logout-html'
     ),
     path(
-        'registro/',
+        'pagina/registro/',
         registro,
-        name='registro'
+        name='registro-html'
     ),
 ]

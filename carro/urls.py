@@ -4,6 +4,7 @@ from .views import (
     CarroAgregarView,
     CarroDetailView,
     CarroEliminarView,
+    carro_agregar_html,
     carro_eliminar_html,
     carro_html,
 )
@@ -31,13 +32,18 @@ urlpatterns = [
     path(
         "html/",
         carro_html,
-        name="carro_html",
+        name="carro-html",
     ),
     
     path(
-        "eliminar/<int:pk>/",
+        "pagina/eliminar/<int:pk>/",
         carro_eliminar_html,
         name="carro-eliminar-html",
     ),
+    path(
+    "pagina/agregar/",
+    carro_agregar_html,
+    name="carro-agregar-html",
+),
     
 ]

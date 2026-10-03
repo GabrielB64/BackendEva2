@@ -11,6 +11,8 @@ from .serializers import OrdenSerializer
 
 from django.shortcuts import get_object_or_404, render, redirect
 from usuarios.permissions import EsAdministrador
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 class CheckoutView(APIView):
@@ -225,3 +227,80 @@ def mis_ordenes_html(request):
             "ordenes": ordenes,
         },
     )
+    
+@login_required
+@transaction.atomic
+def checkout_html(request):
+    if request.method != "POST":
+        return redirect("carro-html")
+
+    carro = get_object_or_404(
+        Carro,
+        usuario=request.user
+    )
+
+    # Bloqueamos los productos mientras se procesa la compra.
+    items = carro.items.select_related("producto").select_for_update()
+
+    if not items.exists():
+        messages.warning(
+            request,
+            "Tu carrito está vacío."
+        )
+        return redirect("carro-html")
+
+    total = 0
+
+    # Primero verificamos que todos los productos tengan stock suficiente.
+    for item in items:
+        producto = item.producto
+
+        if not producto.activo:
+            messages.error(
+                request,
+                f"El producto {producto.nombre} ya no está disponible."
+            )
+            return redirect("carro-html")
+
+        if producto.stock < item.cantidad:
+            messages.error(
+                request,
+                f"No hay suficiente stock de {producto.nombre}."
+            )
+            return redirect("carro-html")
+
+        total += producto.precio * item.cantidad
+
+    # Creamos la orden.
+    orden = Orden.objects.create(
+        usuario=request.user,
+        estado=Orden.Estado.PAGADO,
+        total=total,
+    )
+
+    # Guardamos los productos de la compra y descontamos el stock.
+    for item in items:
+        producto = item.producto
+
+        DetalleOrden.objects.create(
+            orden=orden,
+            producto=producto,
+            nombre_producto=producto.nombre,
+            sku=producto.sku,
+            precio_unitario=producto.precio,
+            cantidad=item.cantidad,
+            subtotal=producto.precio * item.cantidad,
+        )
+
+        producto.stock -= item.cantidad
+        producto.save(update_fields=["stock"])
+
+    # El carrito queda vacío después de la compra.
+    items.delete()
+
+    messages.success(
+        request,
+        f"Compra confirmada correctamente. Orden #{orden.id}."
+    )
+
+    return redirect("mis-ordenes-html")

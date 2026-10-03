@@ -73,11 +73,18 @@
                 </li>
 
                 {% if user.is_authenticated %}
+                {% if user.rol == "ADMINISTRADOR" %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'admin-productos' %}">
+            Administración
+        </a>
+    </li>
+{% endif %}
 
                     <li class="nav-item">
                         <a
                             class="nav-link"
-                            href="{% url 'carro_html' %}"
+                            href="{% url 'carro-html' %}"
                         >
                             Carrito
                         </a>
@@ -92,22 +99,34 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <form
-                            method="post"
-                            action="{% url 'logout' %}"
-                            class="d-inline"
-                        >
-                            {% csrf_token %}
+                {% if user.is_authenticated %}
+    <li class="nav-item">
+        <span class="nav-link">
+            Hola, {{ user.username }}
+        </span>
+    </li>
 
-                            <button
-                                type="submit"
-                                class="btn btn-link nav-link"
-                            >
-                                Cerrar sesión
-                            </button>
-                        </form>
-                    </li>
+    <li class="nav-item">
+    <form method="post" action="{% url 'logout-html' %}" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="nav-link btn btn-link">
+            Cerrar sesión
+        </button>
+    </form>
+</li>
+{% else %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'login-html' %}">
+            Iniciar sesión
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'registro-html' %}">
+            Crear cuenta
+        </a>
+    </li>
+{% endif %}
 
                 {% else %}
 

@@ -25,7 +25,7 @@ class RegistroUsuarioView(TokenObtainPairView):
     serializer_class = RegistroUsuarioSerializer
     permission_classes = []
     
-def loging(request):
+def login_html(request):
     """
     Página de inicio de sesión para la interfaz HTML.
     """
@@ -63,7 +63,7 @@ def loging(request):
     )
 
 
-def logout(request):
+def logout_html(request):
     """
     Cierra la sesión HTML del usuario.
     """

@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.db import transaction
+from django.contrib.auth.decorators import login_required
 
 from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
@@ -138,5 +139,36 @@ def carro_eliminar_html(request, pk):
         )
 
         item.delete()
+
+    return redirect("carro-html")
+
+@login_required
+def carro_agregar_html(request):
+    if request.method == "POST":
+        producto_id = request.POST.get("producto")
+        cantidad = int(request.POST.get("cantidad", 1))
+
+        if cantidad < 1:
+            cantidad = 1
+
+        producto = get_object_or_404(
+            Producto,
+            id=producto_id,
+            activo=True,
+        )
+
+        carro, _ = Carro.objects.get_or_create(
+            usuario=request.user
+        )
+
+        item, creado = ItemCarro.objects.get_or_create(
+            carro=carro,
+            producto=producto,
+            defaults={"cantidad": cantidad},
+        )
+
+        if not creado:
+            item.cantidad += cantidad
+            item.save()
 
     return redirect("carro-html")

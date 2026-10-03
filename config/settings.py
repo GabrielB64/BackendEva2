@@ -162,3 +162,5 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+# LOGIN_URL = '/api/auth/pagina/login/'

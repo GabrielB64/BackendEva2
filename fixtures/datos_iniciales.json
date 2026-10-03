@@ -1,0 +1,352 @@
+[
+    {
+        "model": "catalogo.categoria",
+        "pk": 1,
+        "fields": {
+            "nombre": "Procesadores",
+            "descripcion": "Procesadores para computadores de escritorio.",
+            "activa": true
+        }
+    },
+    {
+        "model": "catalogo.categoria",
+        "pk": 2,
+        "fields": {
+            "nombre": "Tarjetas gráficas",
+            "descripcion": "Tarjetas gráficas dedicadas para gaming y creación de contenido.",
+            "activa": true
+        }
+    },
+    {
+        "model": "catalogo.categoria",
+        "pk": 3,
+        "fields": {
+            "nombre": "Memorias RAM",
+            "descripcion": "Memorias RAM DDR4 y DDR5 para computadores de escritorio.",
+            "activa": true
+        }
+    },
+
+    {
+        "model": "catalogo.producto",
+        "pk": 1,
+        "fields": {
+            "categoria": 1,
+            "nombre": "Ryzen 5 5600",
+            "marca": "AMD",
+            "precio": "119990.00",
+            "sku": "CPU-AMD-R5-5600",
+            "descripcion": "Procesador AMD Ryzen 5 5600 de 6 núcleos y 12 hilos.",
+            "stock": 15,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 2,
+        "fields": {
+            "categoria": 1,
+            "nombre": "Ryzen 5 7600",
+            "marca": "AMD",
+            "precio": "189990.00",
+            "sku": "CPU-AMD-R5-7600",
+            "descripcion": "Procesador AMD Ryzen 5 7600 de arquitectura Zen 4.",
+            "stock": 10,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 3,
+        "fields": {
+            "categoria": 1,
+            "nombre": "Ryzen 7 5700X",
+            "marca": "AMD",
+            "precio": "169990.00",
+            "sku": "CPU-AMD-R7-5700X",
+            "descripcion": "Procesador AMD Ryzen 7 5700X de 8 núcleos y 16 hilos.",
+            "stock": 8,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 4,
+        "fields": {
+            "categoria": 1,
+            "nombre": "Ryzen 7 7700",
+            "marca": "AMD",
+            "precio": "289990.00",
+            "sku": "CPU-AMD-R7-7700",
+            "descripcion": "Procesador AMD Ryzen 7 7700 de arquitectura Zen 4.",
+            "stock": 6,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 5,
+        "fields": {
+            "categoria": 1,
+            "nombre": "Ryzen 9 7900",
+            "marca": "AMD",
+            "precio": "399990.00",
+            "sku": "CPU-AMD-R9-7900",
+            "descripcion": "Procesador AMD Ryzen 9 7900 de 12 núcleos y 24 hilos.",
+            "stock": 4,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 6,
+        "fields": {
+            "categoria": 1,
+            "nombre": "Core i3-12100F",
+            "marca": "Intel",
+            "precio": "89990.00",
+            "sku": "CPU-INT-I3-12100F",
+            "descripcion": "Procesador Intel Core i3-12100F para computadores de escritorio.",
+            "stock": 12,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 7,
+        "fields": {
+            "categoria": 1,
+            "nombre": "Core i5-12400F",
+            "marca": "Intel",
+            "precio": "139990.00",
+            "sku": "CPU-INT-I5-12400F",
+            "descripcion": "Procesador Intel Core i5-12400F de 6 núcleos y 12 hilos.",
+            "stock": 10,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 8,
+        "fields": {
+            "categoria": 1,
+            "nombre": "Core i5-13400F",
+            "marca": "Intel",
+            "precio": "179990.00",
+            "sku": "CPU-INT-I5-13400F",
+            "descripcion": "Procesador Intel Core i5-13400F para equipos de escritorio.",
+            "stock": 8,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+
+    {
+        "model": "catalogo.producto",
+        "pk": 9,
+        "fields": {
+            "categoria": 2,
+            "nombre": "RTX 3060 12GB",
+            "marca": "NVIDIA",
+            "precio": "249990.00",
+            "sku": "GPU-NV-RTX3060-12G",
+            "descripcion": "Tarjeta gráfica NVIDIA GeForce RTX 3060 con 12 GB de memoria.",
+            "stock": 7,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 10,
+        "fields": {
+            "categoria": 2,
+            "nombre": "RTX 4060 8GB",
+            "marca": "NVIDIA",
+            "precio": "329990.00",
+            "sku": "GPU-NV-RTX4060-8G",
+            "descripcion": "Tarjeta gráfica NVIDIA GeForce RTX 4060 con 8 GB de memoria.",
+            "stock": 8,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 11,
+        "fields": {
+            "categoria": 2,
+            "nombre": "RTX 4060 Ti 8GB",
+            "marca": "NVIDIA",
+            "precio": "429990.00",
+            "sku": "GPU-NV-RTX4060TI-8G",
+            "descripcion": "Tarjeta gráfica NVIDIA GeForce RTX 4060 Ti con 8 GB de memoria.",
+            "stock": 5,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 12,
+        "fields": {
+            "categoria": 2,
+            "nombre": "RTX 4070 12GB",
+            "marca": "NVIDIA",
+            "precio": "649990.00",
+            "sku": "GPU-NV-RTX4070-12G",
+            "descripcion": "Tarjeta gráfica NVIDIA GeForce RTX 4070 con 12 GB de memoria.",
+            "stock": 3,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 13,
+        "fields": {
+            "categoria": 2,
+            "nombre": "RX 6600 8GB",
+            "marca": "AMD",
+            "precio": "219990.00",
+            "sku": "GPU-AMD-RX6600-8G",
+            "descripcion": "Tarjeta gráfica AMD Radeon RX 6600 con 8 GB de memoria.",
+            "stock": 8,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 14,
+        "fields": {
+            "categoria": 2,
+            "nombre": "RX 7600 8GB",
+            "marca": "AMD",
+            "precio": "289990.00",
+            "sku": "GPU-AMD-RX7600-8G",
+            "descripcion": "Tarjeta gráfica AMD Radeon RX 7600 con 8 GB de memoria.",
+            "stock": 6,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 15,
+        "fields": {
+            "categoria": 2,
+            "nombre": "RX 7700 XT 12GB",
+            "marca": "AMD",
+            "precio": "449990.00",
+            "sku": "GPU-AMD-RX7700XT-12G",
+            "descripcion": "Tarjeta gráfica AMD Radeon RX 7700 XT con 12 GB de memoria.",
+            "stock": 4,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+
+    {
+        "model": "catalogo.producto",
+        "pk": 16,
+        "fields": {
+            "categoria": 3,
+            "nombre": "16GB DDR4 3200MHz",
+            "marca": "Kingston",
+            "precio": "39990.00",
+            "sku": "RAM-KNG-DDR4-16-3200",
+            "descripcion": "Memoria RAM DDR4 de 16 GB a 3200 MHz.",
+            "stock": 20,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 17,
+        "fields": {
+            "categoria": 3,
+            "nombre": "32GB DDR4 3200MHz",
+            "marca": "Kingston",
+            "precio": "69990.00",
+            "sku": "RAM-KNG-DDR4-32-3200",
+            "descripcion": "Memoria RAM DDR4 de 32 GB a 3200 MHz.",
+            "stock": 15,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 18,
+        "fields": {
+            "categoria": 3,
+            "nombre": "16GB DDR5 5600MHz",
+            "marca": "Corsair",
+            "precio": "54990.00",
+            "sku": "RAM-CRS-DDR5-16-5600",
+            "descripcion": "Memoria RAM DDR5 de 16 GB a 5600 MHz.",
+            "stock": 15,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 19,
+        "fields": {
+            "categoria": 3,
+            "nombre": "32GB DDR5 6000MHz",
+            "marca": "Corsair",
+            "precio": "109990.00",
+            "sku": "RAM-CRS-DDR5-32-6000",
+            "descripcion": "Memoria RAM DDR5 de 32 GB a 6000 MHz.",
+            "stock": 10,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "catalogo.producto",
+        "pk": 20,
+        "fields": {
+            "categoria": 3,
+            "nombre": "32GB DDR5 6000MHz",
+            "marca": "G.Skill",
+            "precio": "119990.00",
+            "sku": "RAM-GSK-DDR5-32-6000",
+            "descripcion": "Memoria RAM DDR5 de 32 GB para equipos de alto rendimiento.",
+            "stock": 8,
+            "activo": true,
+            "creado_en": "2026-10-02T00:00:00Z",
+            "actualizado_en": "2026-10-02T00:00:00Z"
+        }
+    }
+]

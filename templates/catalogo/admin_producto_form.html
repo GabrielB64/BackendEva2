@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}{{ titulo }}{% endblock %}
+
+{% block content %}
+
+<div class="container py-4">
+
+    <h1>{{ titulo }}</h1>
+
+    <form method="post" class="mt-4">
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label">Categoría</label>
+
+            <select
+                name="categoria"
+                class="form-select"
+                required
+            >
+                {% for categoria in categorias %}
+                    <option
+                        value="{{ categoria.id }}"
+                        {% if producto.categoria_id == categoria.id %}
+                            selected
+                        {% endif %}
+                    >
+                        {{ categoria.nombre }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input
+                type="text"
+                name="nombre"
+                class="form-control"
+                value="{{ producto.nombre|default:'' }}"
+                required
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Marca</label>
+            <input
+                type="text"
+                name="marca"
+                class="form-control"
+                value="{{ producto.marca|default:'' }}"
+                required
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Precio</label>
+            <input
+                type="number"
+                name="precio"
+                class="form-control"
+                value="{{ producto.precio|default:'' }}"
+                min="0"
+                step="0.01"
+                required
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">SKU</label>
+            <input
+                type="text"
+                name="sku"
+                class="form-control"
+                value="{{ producto.sku|default:'' }}"
+                required
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <textarea
+                name="descripcion"
+                class="form-control"
+                rows="4"
+            >{{ producto.descripcion|default:'' }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Stock</label>
+            <input
+                type="number"
+                name="stock"
+                class="form-control"
+                value="{{ producto.stock|default:0 }}"
+                min="0"
+                required
+            >
+        </div>
+
+        <div class="form-check mb-4">
+            <input
+                type="checkbox"
+                name="activo"
+                class="form-check-input"
+                id="activo"
+                {% if producto.activo or not producto %}checked{% endif %}
+            >
+
+            <label class="form-check-label" for="activo">
+                Producto activo
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Guardar
+        </button>
+
+        <a
+            href="{% url 'admin-productos' %}"
+            class="btn btn-secondary"
+        >
+            Cancelar
+        </a>
+
+    </form>
+
+</div>
+
+{% endblock %}
